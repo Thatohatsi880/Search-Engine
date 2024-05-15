@@ -8,6 +8,7 @@ export default function App() {
   const [loaded, setLoaded] = useState(false);
   const [weather, setWeather] = useState({});
 
+
   function fetchWeatherData(response) {
     setLoaded(true);
     setWeather({
@@ -17,6 +18,7 @@ export default function App() {
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
     });
+    
   }
 
   function handleSubmit(event) {
@@ -43,20 +45,19 @@ export default function App() {
 
   if (loaded) {
     return (
-      <div>
-        {form}
-        <ul>
-          <li>Temperature: {Math.round(weather.temperature)}°C</li>
-          <li>Description: {weather.description}</li>
-          <li>Humidity: {weather.humidity}%</li>
-          <li>Wind: {weather.wind}km/h</li>
-          <li>
-            <img src={weather.icon} alt={weather.description} />
-          </li>
-        </ul>
-      </div>
-    );
-  } else {
-    return form;
-  }
-}
+        <div className="container">
+          {form}
+          {loaded && (
+            <ul>
+              <li>Temperature: {Math.round(weather.temperature)}°C</li>
+              <li>Description: {weather.description}</li>
+              <li>Humidity: {weather.humidity}%</li>
+              <li>Wind: {weather.wind}km/h</li>
+              <li>
+                <img src={weather.icon} alt={weather.description} />
+              </li>
+            </ul>
+          )}
+        </div>
+      );
+    }}

@@ -2,3 +2,21 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.html,
+body,
+#app-container {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-container {
+  margin-bottom: 20px;
+}
